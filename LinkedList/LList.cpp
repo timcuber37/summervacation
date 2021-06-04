@@ -7,7 +7,7 @@ using namespace std;
 class Node
 {
 public:
-	string data[4];
+	string data;
 	Node *link;
 
 	Node(string input)
@@ -29,7 +29,7 @@ public:
 		numNode = 0;
 	}
 
-	void Insert(string data)
+	void Insert(string &data)
 	{
 		Node *newNode = new Node(data);
 		if(head == NULL)
@@ -39,24 +39,39 @@ public:
 		}
 		else
 		{
-			newNode->head;
+			newNode->link = head;
 			head = newNode;
 		}
 		numNode++;
 	}
 
-	Node *GetByData(string name)
+	Node *GetByData(string &name)
 	{
 		Node *cur = head;
 		for(int i = 0; i < numNode; i++)
 		{
 			if(cur->data == name)
-				return name;
+				return cur;
+			cur = cur->link;
 		}
 		return NULL;
 	}
 
-	void InsertAfterNode(string data, Node *node)
+	Node *GetByIndex(int x)
+	{
+		Node *cur = head;
+		for(int i = 0; i < x; i++)
+		{
+			if(i == x)
+			{
+				return cur;
+			}
+			cur = cur->link;
+		}
+		return NULL;
+	}
+
+	void InsertAfterNode(string &data, Node *node)
 	{
 		Node *pNode = GetByData(data);
 		node->link = pNode->link;
@@ -68,7 +83,41 @@ public:
 		Node *temp = head->link;
 
 		head->link = head->link->link;
-		return temp->data;
+	}
+
+	void Print()
+	{
+		Node* temp = head;
+		while(temp != NULL)
+		{
+			std::cout << temp->data << std::endl;
+			temp = temp->link;
+		}
+	}
+
+	void Invert()
+	{
+		Node* temp = head;
+		Node* prev = NULL;
+		Node* next = NULL;
+
+		while(temp != NULL)
+		{
+			next = temp->link;
+			temp->link = prev;
+			prev = temp;
+			temp = next;
+		}
+		head = prev;
+	}
+
+	void Concat(LList &list)
+	{
+		Node *temp = head;
+		while(temp->next != NULL)
+		{
+			
+		}
 	}
 };
 
