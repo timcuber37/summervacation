@@ -25,7 +25,7 @@ int main()
 
     list->Invert();
     list->Print();    
-/*
+
     node = list->GetByIndex(2);
     if (node != NULL)
         cout << "GetByIndex: " << node->data << endl << endl;
@@ -53,5 +53,5 @@ int main()
 
     delete list;
     delete list3;
-  */  
+   
 }

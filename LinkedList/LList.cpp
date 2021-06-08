@@ -29,7 +29,7 @@ public:
 		numNode = 0;
 	}
 
-	void Insert(string &data)
+	void Insert(string data)
 	{
 		Node *newNode = new Node(data);
 		if(head == NULL)
@@ -45,7 +45,7 @@ public:
 		numNode++;
 	}
 
-	Node *GetByData(string &name)
+	Node *GetByData(string name)
 	{
 		Node *cur = head;
 		for(int i = 0; i < numNode; i++)
@@ -71,18 +71,32 @@ public:
 		return NULL;
 	}
 
-	void InsertAfterNode(string &data, Node *node)
+	bool IsEmpty()
 	{
-		Node *pNode = GetByData(data);
-		node->link = pNode->link;
-		pNode->link = node;
+		if(head->link == NULL && data == "")
+		{
+			return true;
+		}
+		return false;
 	}
 
-	void Delete()
+	int GetLength()
+	{
+		return numNode;
+	}
+
+	void InsertAfterNode(string data, Node *node)
+	{
+		Node *pNode = new Node(data);
+		pNode->link = node->link;
+		node->link = pNode;
+	}
+
+	Node *Delete()
 	{
 		Node *temp = head->link;
-
 		head->link = head->link->link;
+		return head;
 	}
 
 	void Print()
@@ -111,14 +125,28 @@ public:
 		head = prev;
 	}
 
-	void Concat(LList &list)
+	void Copy(LList *l)
 	{
-		Node *temp = head;
-		while(temp->next != NULL)
+		Node *temp = l->link;
+		while(temp->link != NULL)
 		{
-			
+			temp->data = l->data;
+			temp = temp->link;
+			l = l->link;
 		}
 	}
+
+	void Concat(LList list)
+	{
+		Node *temp = head;
+		Node *temp2 = list->link;
+		while(temp->link != NULL)
+		{
+			temp = temp->next;
+		}
+		temp->next = *temp2;
+	}
+	
 };
 
 
