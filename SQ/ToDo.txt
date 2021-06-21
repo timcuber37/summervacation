@@ -1,0 +1,15 @@
+For Stack: stackclient is the source code that has main function and stack is the source code that has codes for stack
+	and it uses element_struct source code.
+
+For Queue: queueclient is the souce code that has main function and queue is the source code taht has codes for queue
+	  and it uses element_class source code.
+
+
+
+Stack uses element made up of structure and Queue uses element made up of class. 
+
+You have to fill out stack and queue source files, not other files.
+
+But if you think it is nessesary to fix other codes, you are allowed with giving sutable explanations. 
+
+Good Luck!

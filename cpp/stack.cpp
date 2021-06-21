@@ -35,7 +35,7 @@ public:
 			cout << "Stack is full " << endl;
 		}
 	}
-
+/*
 	int Delete()
 	{
 		int temp;
@@ -53,7 +53,7 @@ public:
 
 		return temp;
 	}
-
+*/
 	void Print()
 	{
 		for(int i = 0; i < num; i++)
@@ -74,4 +74,5 @@ int main()
 	s1.Insert(5);
 	s1.Insert(6);
 	s1.Insert(7);
+	s1.Print();
 }
